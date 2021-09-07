@@ -1,37 +1,28 @@
 <template>
   <div>
-
     <div class="menu">
       <div class="menu__sector">
         <div>Books</div>
-        <ul>
-          <li v-for="item in classic" :key="item.id">
-            <nuxt-link :to="`/books/${item.id}`">{{item.name}}</nuxt-link>
-          </li>
-           <li v-for="item in adventure" :key="item.id">
-            <nuxt-link :to="`/books/${item.id}`">{{item.name}}</nuxt-link>
-          </li>
-        </ul>
+        <nuxt-link to='/books/classic' class="menu__link">classic</nuxt-link>
+        <nuxt-link to='/books/adventure' class="menu__link">adventure</nuxt-link>
       </div>
       <div class="menu__sector">
         <div>Phones</div>
-        <ul>
-          <li v-for="item in iphone" :key="item.id">
-            <nuxt-link :to="`/phones/${item.id}`">{{item.name}}</nuxt-link>
-          </li>
-          <li v-for="item in android" :key="item.id">
-            <nuxt-link :to="`/phones/${item.id}`">{{item.name}}</nuxt-link>
-          </li>
-        </ul>
+            <nuxt-link to='/phones/iphone' class="menu__link">iphone</nuxt-link>
+            <nuxt-link to='/phones/android' class="menu__link">android</nuxt-link>
       </div>
     </div>
-
+    <Explorer/>
   </div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
+import Explorer from './Explorer.vue'
 export default {
+  components: {
+    Explorer
+  },
   computed: {
     ...mapGetters({
       classic: 'subcategories/getClassic',
@@ -42,8 +33,6 @@ export default {
   }
 }
 </script>
-
-
 <style lang="sass" scoped>
 
   .menu
